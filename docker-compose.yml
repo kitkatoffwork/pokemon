@@ -10,5 +10,15 @@ services:
       - .:/app
       - ~/.ssh:/home/node/.ssh
       - node_modules-store:/app/node_modules
+  storybook:
+    user: ${UID}:${GID}
+    build: .
+    command: yarn storybook
+    ports:
+      - '8088:8088'
+    volumes:
+      - .:/app
+      - ~/.ssh:/home/node/.ssh
+      - node_modules-store:/app/node_modules
 volumes:
   node_modules-store:
